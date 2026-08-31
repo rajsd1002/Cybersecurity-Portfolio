@@ -1826,7 +1826,9 @@ img {
     padding-right: 35px;
   }
 }
-
+.links a.active {
+  color: var(--accent);
+}
 
 /* =========================================================
    REDUCED MOTION
