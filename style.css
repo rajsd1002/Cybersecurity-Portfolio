@@ -1223,19 +1223,54 @@ img {
 /* =========================================================
    BACKGROUND / JOURNEY
 ========================================================= */
+/* =========================================================
+   BACKGROUND SUBHEADINGS
+========================================================= */
 
-.journey-list {
-  margin-top: 26px;
+.journey-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-top: 52px;
+  margin-bottom: 0;
+}
+
+.journey-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.journey-heading span {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+}
+
+.certification-heading {
+  margin-top: 72px;
+}
+
+
+/* =========================================================
+   CERTIFICATION LIST
+========================================================= */
+
+.certification-list {
+  margin-top: 22px;
   border-top: 1px solid var(--border);
 }
 
-.journey-list > div {
+.certificate-card {
   display: grid;
-  grid-template-columns: 150px 1fr 40px;
-  gap: 30px;
+  grid-template-columns: 60px 1fr auto;
   align-items: center;
+  gap: 24px;
 
-  padding: 28px 0;
+  padding: 25px 0;
 
   border-bottom: 1px solid var(--border);
 
@@ -1244,37 +1279,140 @@ img {
     background var(--transition);
 }
 
-.journey-list > div:hover {
+.certificate-card:hover {
   padding-left: 12px;
   padding-right: 12px;
   background: rgba(217,255,82,.018);
 }
 
-.journey-list .date {
-  color: #66716d;
+
+/* =========================================================
+   CERTIFICATION ICON
+========================================================= */
+
+.certificate-icon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+
+  background: rgba(217,255,82,.045);
+
+  color: var(--accent);
+
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 15px;
+  font-weight: 500;
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition);
 }
 
-.journey-list h3 {
+.certificate-card:hover .certificate-icon {
+  transform: translateY(-2px) rotate(-4deg);
+
+  border-color: var(--accent);
+
+  background: rgba(217,255,82,.08);
+}
+
+
+/* =========================================================
+   CERTIFICATION TEXT
+========================================================= */
+
+.certificate-info small {
+  color: #606b67;
+
+  font-family: var(--font-mono);
+  font-size: 8px;
+
+  letter-spacing: .1em;
+}
+
+.certificate-info h3 {
+  margin-top: 6px;
+
+  color: var(--text);
+
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 19px;
+
   letter-spacing: -.03em;
 }
 
-.journey-list p {
-  margin-top: 4px;
+.certificate-info p {
+  margin-top: 5px;
+
   color: #78827f;
-  font-size: 12px;
+
+  font-size: 11px;
+  line-height: 1.7;
 }
 
-.journey-list > div > b {
+
+/* =========================================================
+   VIEW CERTIFICATE LINK
+========================================================= */
+
+.certificate-link {
   color: var(--accent);
+
   font-family: var(--font-mono);
-  font-size: 10px;
-  text-align: right;
+  font-size: 9px;
+
+  white-space: nowrap;
+
+  transition:
+    transform var(--transition),
+    color var(--transition);
 }
 
+.certificate-link:hover {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   CERTIFICATION MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .certificate-card {
+    grid-template-columns: 52px 1fr;
+    gap: 15px;
+  }
+
+  .certificate-link {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 2px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .certificate-card {
+    padding: 20px 0;
+  }
+
+  .certificate-info h3 {
+    font-size: 16px;
+  }
+
+  .certificate-info p {
+    font-size: 10px;
+  }
+
+}
 
 /* =========================================================
    CONTACT
