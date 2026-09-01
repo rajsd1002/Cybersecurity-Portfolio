@@ -471,6 +471,48 @@ const sectionObserver =
 sections.forEach(section => {
   sectionObserver.observe(section);
 });
+```javascript
+/* =========================================================
+   COPY EMAIL
+========================================================= */
+
+const copyEmailButton = document.querySelector(".copy-email");
+
+if (copyEmailButton) {
+
+  copyEmailButton.addEventListener("click", async () => {
+
+    const email = copyEmailButton.dataset.email;
+
+    if (!email) return;
+
+    try {
+
+      await navigator.clipboard.writeText(email);
+
+      copyEmailButton.textContent = "COPIED";
+      copyEmailButton.classList.add("copied");
+
+      setTimeout(() => {
+
+        copyEmailButton.textContent = "COPY";
+        copyEmailButton.classList.remove("copied");
+
+      }, 1800);
+
+    } catch (error) {
+
+      copyEmailButton.textContent = "ERROR";
+
+      setTimeout(() => {
+        copyEmailButton.textContent = "COPY";
+      }, 1800);
+
+    }
+
+  });
+
+}
 
 
 /* =========================================================
