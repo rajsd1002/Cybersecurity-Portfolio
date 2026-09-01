@@ -320,9 +320,6 @@ img {
 }
 
 .links a:hover,
-.links a.active {
-  color: var(--accent);
-}
 
 .links a:hover::after,
 .links a.active::after {
