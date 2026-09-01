@@ -1414,91 +1414,538 @@ img {
 
 }
 
+```css
 /* =========================================================
-   CONTACT
+   MODERN CONTACT SECTION
 ========================================================= */
 
 .contact {
-  padding-bottom: 80px;
+  padding-top: 125px;
+  padding-bottom: 95px;
 }
 
-.contact-box {
+.contact-header {
   display: grid;
-  grid-template-columns: 1fr .9fr;
-  gap: 90px;
-  padding: 58px;
-
-  border: 1px solid var(--border);
-  border-radius: 26px;
-
-  background:
-    radial-gradient(
-      circle at 20% 10%,
-      rgba(217,255,82,.06),
-      transparent 35%
-    ),
-    rgba(255,255,255,.018);
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 50px;
+  margin-bottom: 48px;
 }
 
-.contact-box h2 {
+.contact-header h2 {
   margin-top: 18px;
   font-family: var(--font-display);
-  font-size: clamp(47px, 6vw, 75px);
-  line-height: .92;
+  font-size: clamp(47px, 6vw, 78px);
+  line-height: .9;
   letter-spacing: -.065em;
 }
 
-.contact-box h2 em {
+.contact-header h2 em {
   color: var(--accent);
   font-style: normal;
 }
 
-.contact-box p {
-  max-width: 530px;
+.contact-header p {
+  max-width: 560px;
   margin-top: 22px;
   color: #808a87;
   font-size: 13px;
   line-height: 1.85;
 }
 
-.contacts {
+
+/* =========================================================
+   AVAILABILITY
+========================================================= */
+
+.availability-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 280px;
+  padding: 15px 17px;
+
+  border: 1px solid rgba(217,255,82,.18);
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(217,255,82,.06),
+      rgba(255,255,255,.015)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.03),
+    0 18px 45px rgba(0,0,0,.22);
+}
+
+.availability-dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+  background: var(--accent);
+
+  box-shadow:
+    0 0 0 5px rgba(217,255,82,.06),
+    0 0 18px rgba(217,255,82,.55);
+
+  animation: availabilityPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes availabilityPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 5px rgba(217,255,82,.06),
+      0 0 18px rgba(217,255,82,.55);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 9px rgba(217,255,82,.02),
+      0 0 26px rgba(217,255,82,.75);
+  }
+}
+
+.availability-card > div {
   display: flex;
   flex-direction: column;
 }
 
-.contacts a {
-  padding: 16px 0;
-  border-bottom: 1px solid var(--border);
-
-  transition:
-    padding var(--transition),
-    color var(--transition);
-}
-
-.contacts a:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.contacts a:hover {
-  padding-left: 10px;
-  color: var(--accent);
-}
-
-.contacts small {
-  display: block;
-  color: #606b67;
+.availability-card small {
+  color: #64706c;
   font-family: var(--font-mono);
   font-size: 8px;
   letter-spacing: .1em;
 }
 
-.contacts strong {
-  display: block;
-  margin-top: 4px;
-  font-size: 13px;
-  font-weight: 500;
+.availability-card strong {
+  margin-top: 3px;
+  color: #dce3df;
+  font-size: 10px;
+  font-weight: 600;
 }
 
+.status-arrow {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   CONTACT GRID
+========================================================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+
+/* =========================================================
+   CONTACT CARD
+========================================================= */
+
+.contact-card {
+  position: relative;
+  min-height: 290px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 24px;
+
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.025),
+      rgba(255,255,255,.008)
+    );
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.contact-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(217,255,82,.08),
+      transparent 34%
+    );
+
+  opacity: 0;
+  transition: opacity var(--transition);
+
+  pointer-events: none;
+}
+
+.contact-card::after {
+  content: "";
+
+  position: absolute;
+  width: 140px;
+  height: 140px;
+
+  right: -55px;
+  bottom: -55px;
+
+  border: 1px solid rgba(217,255,82,.08);
+  border-radius: 50%;
+
+  transition:
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+
+  border-color: rgba(217,255,82,.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(217,255,82,.035),
+      rgba(255,255,255,.012)
+    );
+
+  box-shadow:
+    0 25px 65px rgba(0,0,0,.28),
+    0 0 35px rgba(217,255,82,.035);
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+.contact-card:hover::after {
+  transform: scale(1.22);
+  border-color: rgba(217,255,82,.14);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.contact-card-top {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-number {
+  color: #56615d;
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.contact-icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--accent-border);
+  border-radius: 11px;
+
+  background: rgba(217,255,82,.045);
+
+  color: var(--accent);
+
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition);
+}
+
+.contact-card:hover .contact-icon {
+  transform: translateY(-2px) rotate(-4deg);
+
+  background: rgba(217,255,82,.08);
+  border-color: var(--accent);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.contact-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card-content small {
+  color: #616c68;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .1em;
+}
+
+.contact-card-content h3 {
+  margin-top: 7px;
+
+  color: var(--text);
+
+  font-family: var(--font-display);
+  font-size: 28px;
+
+  letter-spacing: -.04em;
+}
+
+.contact-card-content p {
+  max-width: 430px;
+  margin-top: 11px;
+
+  color: #7e8884;
+
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   CONTACT ACTION
+========================================================= */
+
+.contact-action-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.contact-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--accent);
+
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .02em;
+
+  transition:
+    transform var(--transition),
+    color var(--transition);
+}
+
+.contact-action span {
+  transition: transform var(--transition);
+}
+
+.contact-action:hover {
+  transform: translateX(3px);
+}
+
+.contact-action:hover span {
+  transform: translate(3px, -3px);
+}
+
+.primary-contact {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   COPY BUTTON
+========================================================= */
+
+.copy-email {
+  flex: 0 0 auto;
+
+  padding: 8px 10px;
+
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  background: rgba(255,255,255,.025);
+
+  color: #8f9995;
+
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: .08em;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.copy-email:hover {
+  border-color: var(--accent-border);
+  background: rgba(217,255,82,.06);
+  color: var(--accent);
+}
+
+.copy-email.copied {
+  border-color: var(--accent);
+  background: rgba(217,255,82,.08);
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   SECURE CONNECTION BAR
+========================================================= */
+
+.contact-terminal {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 25px;
+
+  margin-top: 14px;
+  padding: 15px 18px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.012);
+
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #69736f;
+  letter-spacing: .08em;
+}
+
+.terminal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  box-shadow: 0 0 10px rgba(217,255,82,.55);
+}
+
+.terminal-message {
+  color: #a5afab;
+}
+
+.terminal-prompt {
+  color: #5f6965;
+}
+
+.terminal-prompt span {
+  color: var(--accent);
+}
+
+
+/* =========================================================
+   CONTACT RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .contact-header {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .availability-card {
+    width: min(320px, 100%);
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .contact {
+    padding-top: 95px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    min-height: 255px;
+  }
+
+  .contact-terminal {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .terminal-prompt {
+    display: none;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .contact-card {
+    padding: 20px;
+    min-height: 240px;
+  }
+
+  .contact-card-content h3 {
+    font-size: 24px;
+  }
+
+  .contact-card-content p {
+    font-size: 11px;
+  }
+
+  .contact-action-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .primary-contact {
+    max-width: 100%;
+  }
+
+  .copy-email {
+    padding: 7px 9px;
+  }
+
+}
 
 /* =========================================================
    FOOTER
